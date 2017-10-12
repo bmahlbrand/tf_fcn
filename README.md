@@ -9,7 +9,7 @@ A TensorFlow Implementation of:
 
 ## Requirements
 
-1. TensorFlow r0.10 (r0.11 should be fine, not sure if this can work for later versions)
+1. TensorFlow r0.10 (r0.11 should be fine, not sure if this can work for later versions [Update Oct 12 2017: compatible with TensorFlow 1.3.0])
 
 2. OpenCV 2 and its Python bindings
 

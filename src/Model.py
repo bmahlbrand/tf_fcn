@@ -31,10 +31,10 @@ class Network(object):
 				with tf.variable_scope(fc_scopes[key], reuse=True):
 					var1 = tf.get_variable('weights')
 					session.run(var1.assign(w))
-					print "Assign pretrain model weights to " + fc_scopes[key]
+					print("Assign pretrain model weights to " + fc_scopes[key])
 					var2 = tf.get_variable('biases')
 					session.run(var2.assign(b))
-					print "Assign pretrain model biases to " + fc_scopes[key]
+					print("Assign pretrain model biases to " + fc_scopes[key])
 				continue
 
 			with tf.variable_scope(key, reuse=True):
@@ -42,9 +42,9 @@ class Network(object):
 					try:
 						var = tf.get_variable(subkey)
 						session.run(var.assign(data_dict[key][subkey]))
-						print "Assign pretrain model " + subkey + " to " + key
+						print("Assign pretrain model " + subkey + " to " + key)
 					except ValueError:
-						print "Ignore " + key
+						print("Ignore " + key)
 						if not ignore_missing:
 							raise
 

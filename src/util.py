@@ -22,8 +22,8 @@ def prep_im_for_blob(im_name, seg_name, rgb_to_gray, max_size=(640,640)):
 
 	seg_blob = np.zeros((max_size[0], max_size[1], 1))
 	mask = np.zeros_like(seg_blob)
-	for i in xrange(row):
-		for j in xrange(col):
+	for i in range(row):
+		for j in range(col):
 			seg_blob[i,j] = rgb_to_gray[tuple(seg[i,j,:])]
 			# Discard 255 edge class
 			if seg_blob[i,j] != 255:
@@ -58,13 +58,13 @@ def prep_small_im_for_blob(im_name, seg_name, rgb_to_gray, max_size=(256,256)):
 	seg_blob = np.zeros((max_size[0], max_size[1]))
 	mask = np.zeros_like(seg_blob)
 
-	for i in xrange(row):
-		for j in xrange(col):
+	for i in range(row):
+		for j in range(col):
 			seg_gray[i,j] = rgb_to_gray[tuple(seg[i,j])]
 	seg_blob = cv2.resize(seg_gray, max_size, interpolation=cv2.INTER_NEAREST)
 
-	for i in xrange(max_size[0]):
-		for j in xrange(max_size[1]):
+	for i in range(max_size[0]):
+		for j in range(max_size[1]):
 			if seg_blob[i,j] != 255:
 				mask[i, j] = 1
 			else:
@@ -97,7 +97,7 @@ def colormap(N=256):
 			temp = temp >> 3
 		gray_to_rgb[i] = (r,g,b)
 
-	for key, val in gray_to_rgb.iteritems():
+	for key, val in gray_to_rgb.items():
 		rgb_to_gray[val] = key
 
 	return gray_to_rgb, rgb_to_gray
@@ -172,7 +172,7 @@ def bilinear_upsample_weights(factor, number_of_classes):
 
 	upsample_kernel = upsample_filt(filter_size)
 
-	for i in xrange(number_of_classes): 
+	for i in range(number_of_classes): 
 		weights[:, :, i, i] = upsample_kernel
 
 	return weights
@@ -180,7 +180,7 @@ def bilinear_upsample_weights(factor, number_of_classes):
 
 
 if __name__ == '__main__':
-	root = '../data/VOCdevkit/VOC2011/'
+	root = './data/TrainVal/VOCdevkit/VOC2011/'
 	im_name = root + 'JPEGImages/2007_000033.jpg'
 	seg_name = root + 'SegmentationClass/2007_000033.png'
 	_, rgb_to_gray = colormap()

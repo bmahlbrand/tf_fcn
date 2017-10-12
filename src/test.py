@@ -48,7 +48,7 @@ if __name__ == '__main__':
 
 	with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as session:
 		saver.restore(session, ckpt)
-		print 'Model restored.'
+		print('Model restored.')
 
 		# Iterate the whole set once
 		for i in range(data_loader.num_images):
@@ -68,4 +68,4 @@ if __name__ == '__main__':
 			cv2.imwrite(join(rgb_path, im_name), seg_rgb[:,:,::-1])
 			cv2.imwrite(join(gray_path, im_name), seg_valid)
 
-			print str(i) + '/' + str(data_loader.num_images) + ' done!'
+			print(str(i) + '/' + str(data_loader.num_images) + ' done!')

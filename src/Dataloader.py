@@ -19,7 +19,7 @@ class Dataloader(object):
 		if split != 'train' and split != 'val' and split != 'trainval' and split != 'test':
 			raise Exception('Please enter valid split variable!')
 
-		root = '../data/VOCdevkit/VOC2011/'
+		root = './data/TrainVal/VOCdevkit/VOC2011/'
 		self.img_path = join(root, 'JPEGImages/')
 		self.seg_path = join(root, 'SegmentationClass/')
 		self.split = split
@@ -57,7 +57,7 @@ class Dataloader(object):
 		process_size = self.batch_num
 		# process mini_batch as 5 process, require that the number of 
 		# sample in a mini_batch is a multiplying of 5
-		for _ in xrange(self.batch_num/process_size):
+		for _ in range(int(self.batch_num/process_size)):
 			# Permutate the data again
 
 			if self.temp_pointer+process_size > self.num_images:
@@ -94,7 +94,7 @@ class Dataloader_test(Dataloader):
 		if split != 'train' and split != 'val' and split != 'trainval' and split != 'test':
 			raise Exception('Please enter valid split variable!')
 
-		root = '../data/VOCdevkit/VOC2011/'
+		root = './data/TrainVal/VOCdevkit/VOC2011/'
 		self.img_path = join(root, 'JPEGImages/')
 		self.seg_path = join(root, 'SegmentationClass/')
 		self.split = split
@@ -145,7 +145,7 @@ class Dataloader_small(Dataloader):
 		process_size = 5
 		# process mini_batch as 5 process, require that the number of 
 		# sample in a mini_batch is a multiplying of 5
-		for _ in xrange(self.batch_num/process_size):
+		for _ in range(int(self.batch_num/process_size)):
 			# Permutate the data again
 
 			if self.temp_pointer+process_size > self.num_images:

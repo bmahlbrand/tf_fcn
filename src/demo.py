@@ -37,7 +37,7 @@ if __name__ == '__main__':
 	data_loader = Dataloader('val', config)
 
 	saver = tf.train.Saver()
-	ckpt = '../model/FCN8_adam_iter_10000.ckpt'
+	ckpt = './data/FCN8_adam_iter_10000.ckpt'
 	# Extract ckpt into npy, if needed
 	# with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as session:
 		# model.extract(ckpt, session, saver)
@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
 	with tf.Session(config=tf.ConfigProto(allow_soft_placement=True)) as session:
 		saver.restore(session, ckpt)
-		print 'Model restored.'
+		print('Model restored.')
 
 		minibatch = data_loader.get_next_minibatch()
 		feed_dict = {model.img: minibatch[0],
